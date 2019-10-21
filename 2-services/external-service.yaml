@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name:  sorint
+spec:
+  type:  ExternalName
+  externalName: www.sorint.it
+  
+  
+  

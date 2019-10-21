@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: cm-vol-example
+spec:
+  template:
+    spec:
+      containers:
+      - name: mypod
+        image: alpine:latest
+        command: ["/bin/sh", "-c"]
+        args: ["cat /myconfig/city"]
+        volumeMounts:
+        - name: config-volume
+          mountPath: /myconfig
+      restartPolicy: Never
+      volumes:
+      - name: config-volume
+        configMap:
+          name: manifest-example

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-example-2-containers
+  labels:
+    app: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    ports:
+        - containerPort: 80
+  - name: busybox
+    image: busybox
+    command: ["/bin/sleep", "3600"]
+    ports:
+        - containerPort: 80
