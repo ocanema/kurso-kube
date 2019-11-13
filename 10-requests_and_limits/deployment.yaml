@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pod-resources
+  labels:
+    component: pod-resources
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pod-resources
+  template:
+    metadata:
+      labels:
+        app: pod-resources
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:alpine
+          imagePullPolicy: "Always"
+          ports:
+          - name: http
+            containerPort: 80
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "64Mi"
+            limits: 
+              cpu: "100m"
+              memory: "256Mi"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            timeoutSeconds: 5
+            initialDelaySeconds: 20
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            timeoutSeconds: 5
+            initialDelaySeconds: 20

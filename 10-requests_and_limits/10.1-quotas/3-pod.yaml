@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mem-demo
+spec:
+  containers:
+  - name: mem-demo
+    image: nginx:alpine

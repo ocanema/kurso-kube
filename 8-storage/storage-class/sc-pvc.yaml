@@ -8,5 +8,5 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  #storageClassName: standard
-  storageClassName: my-sc
+  storageClassName: standard
+  #storageClassName: my-sc
